@@ -49,4 +49,4 @@ module.exports = (sequelize, Sequelize) => {
   
     return admin;
   };
-  
+

@@ -24,9 +24,4 @@ db.employe = require("./employe.model.js")(sequelize, Sequelize);
 db.fourns = require("./fourns.model.js")(sequelize, Sequelize);
 db.puce = require("./puce.model.js")(sequelize, Sequelize);
 db.smart = require("./smart.model.js")(sequelize, Sequelize);
-
-
-
-
-
-module.exports = db;
+module.exports = db; 
