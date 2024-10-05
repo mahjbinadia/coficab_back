@@ -127,18 +127,22 @@ exports.deleteFournisseur = (req, res) => {
 
 // Créer un nouvel employé
 exports.createEmployee = (req, res) => {
-  if (!req.body.name || !req.body.position) {
+  if (!req.body.nom) {
     return res.status(400).send({
-      message: "Le nom et le poste sont requis pour créer un employé !"
+      message: "Le nom  est requis pour créer un employé !"
     });
   }
 
   const employee = {
-    name: req.body.name,
-    position: req.body.position,
-    salary: req.body.salary,
+    id: req.body.id,
+    cin: req.body.cin,
+    nom: req.body.nom,
+    prenom: req.body.prenom,
+    tel: req.body.tel,
     email: req.body.email
+
   };
+  // Save Employee in the database
 
   Employee.create(employee)
     .then(data => {
