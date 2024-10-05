@@ -4,23 +4,27 @@ const Employee = db.employe;
 // const Op = db.Sequelize.Op;  // Ajout de Op pour les opérations conditionnelles
 
 // ================= CRUD Fournisseur =================
-
 // Créer un nouveau fournisseur
 exports.createFournisseur = (req, res) => {
-  if (!req.body.name || !req.body.contact) {
+  // Validate request
+  if (!req.body.nom) {  // Correction ici
     return res.status(400).send({
       message: "Le nom et le contact sont requis pour créer un fournisseur !"
     });
   }
 
-  const Fournisseur = {
-    name: req.body.name,
-    contact: req.body.contact,
-    address: req.body.address,
-    email: req.body.email
+  // Create a Fournisseur
+  const fournisseur = {
+    id: req.body.id,
+    nom: req.body.nom,
+    modelsmartphone: req.body.modelsmartphone,
+    tel: req.body.tel,
+    adresse: req.body.adresse,
+    matricule:req.body.matricule
   };
 
-  Fournisseur.create(Fournisseur)
+  // Save Fournisseur in the database
+  Fournisseur.create(fournisseur)
     .then(data => {
       res.send(data);
     })
@@ -30,6 +34,7 @@ exports.createFournisseur = (req, res) => {
       });
     });
 };
+
 
 // Récupérer tous les Fournisseur avec possibilité de filtrer par nom
 exports.findAllFournisseurs = (req, res) => {
